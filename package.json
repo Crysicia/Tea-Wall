@@ -1,5 +1,14 @@
 {
   "name": "tea-wall",
   "private": true,
-  "dependencies": {}
+  "dependencies": {},
+  "husky": {
+    "hooks": {
+      "pre-commit": "rubocop && bundle exec annotate",
+      "pre-push": "rspec"
+    }
+  },
+  "devDependencies": {
+    "husky": "^1.3.1"
+  }
 }
