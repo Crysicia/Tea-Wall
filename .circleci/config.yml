@@ -1,3 +1,4 @@
+
 version: 2
 jobs:
   build:
@@ -14,7 +15,9 @@ jobs:
         environment:
           POSTGRES_USER: circleci_user
           POSTGRES_PASSWORD: password
-          POSTGRES_DB: tea_wall_circleci_db
+          POSTGRES_DB: ecommerce_circleci_db
+          
+      - image: redis@sha256:54057dd7e125ca41afe526a877e8bd35ec2cdd33b9217e022ed37bdcf7d09673
 
     steps:
       - checkout
@@ -36,7 +39,7 @@ jobs:
       - run:
           name: Wait for DB
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
-
+          
       - run: bundle exec rails db:create db:migrate
 
       - run:
@@ -46,4 +49,4 @@ jobs:
       - run:
           name: run tests
           command: |
-            bundle exec rspec --format progress \
+            bundle exec rspec --format progress
