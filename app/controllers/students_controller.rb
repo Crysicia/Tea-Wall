@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class StudentsController < ApplicationController
-  before_action :find_student, only: [:edit, :update, :destroy]
+  before_action :find_student, only: %i[edit update destroy]
 
   def index
     @students = Student.all
