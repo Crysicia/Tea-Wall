@@ -1,0 +1,11 @@
+<h1>ÉDITER UN ÉLÈVE</h1>
+
+<%= form_for(@student) do |f| %>
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name, class: 'form-control' %><br>
+
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name, class: 'form-control' %><br><br>
+
+  <%= f.submit "Enregistrer les modifications", class: "btn btn-primary" %>
+<% end %>

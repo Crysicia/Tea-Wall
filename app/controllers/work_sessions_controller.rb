@@ -12,4 +12,8 @@ class WorkSessionsController < ApplicationController
   def create
     redirect_to root_path
   end
+  
+  def index
+    @work_sessions = WorkSession.all.order(:date)
+  end
 end
