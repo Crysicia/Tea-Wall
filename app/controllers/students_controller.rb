@@ -1,26 +1,24 @@
 # frozen_string_literal: true
 
 class StudentsController < ApplicationController
+  before_action :find_student, only: [:edit, :update, :destroy]
+
   def index
     @students = Student.all
   end
 
-  def edit
-    @student = Student.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @student = Student.find(params[:id])
     if @student.update(student_params)
-      redirect_to action: 'index'
       flash[:success] = "Modification enregistrée"
+      redirect_to action: 'index'
     else
       render 'edit'
     end
   end
 
   def destroy
-    @student = Student.find(params[:id])
     @student.destroy
     flash[:success] = "Élève supprimé"
     redirect_to students_path
@@ -30,5 +28,9 @@ class StudentsController < ApplicationController
 
   def student_params
     params.require(:student).permit(:first_name, :last_name)
+  end
+
+  def find_student
+  	@student = Student.find(params[:id])
   end
 end
