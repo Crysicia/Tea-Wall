@@ -1,0 +1,18 @@
+<table>
+  <thead>
+    <tr>
+      <th>Matière</th>
+      <th>Prénom</th>
+      <th>Nom</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%@teachers.each do |teacher|%>
+    <tr>
+      <td><%=teacher.subject%></td>
+      <td><%=teacher.first_name%></td>
+      <td><%=teacher.last_name%></td>
+    </tr>
+    <%end%>
+  </tbody>
+</table>
