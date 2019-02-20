@@ -1,0 +1,18 @@
+<h1>LISTE DES ÉLÈVES</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Prénom</th>
+      <th>Nom</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @students.each do |student| %>
+      <tr>
+        <td><%= student.first_name %></td>
+        <td><%= student.last_name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
