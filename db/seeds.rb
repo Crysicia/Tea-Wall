@@ -34,3 +34,25 @@ Skill.delete_all
   )
   p "skill #{i} : créé"
 end
+
+# for the moment only 8slots of 55 minutes each.
+WorkSession.delete_all
+Slot.delete_all
+start = 8
+end_at = 9
+8.times do |i|
+  Slot.create!(
+    start_time: DateTime.strptime("#{start + i}:00", "%H:%M"),
+    end_time: DateTime.strptime("#{end_at + i}:00", "%H:%M")
+  )
+  p "slot #{i} : créé"
+end
+
+10.times do |i|
+  WorkSession.create!(
+    title: Faker::App.name,
+    date: Faker::Date.forward(10),
+    slot_id: Slot.pluck(:id).sample
+  )
+  p "work_session #{i} : créé"
+end
