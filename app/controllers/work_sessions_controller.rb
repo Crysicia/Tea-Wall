@@ -10,11 +10,23 @@ class WorkSessionsController < ApplicationController
   end
 
   def create
-    puts params
+    WorkSession.create(ws_parameters)
     redirect_to work_sessions_path
   end
 
   def index
     @work_sessions = WorkSession.all.order(:date)
+  end
+
+  private
+
+  def ws_parameters
+    params.require(:work_session).permit(
+      :title,
+      :date,
+      :slot_id,
+      teacher_ids: [],
+      student_ids: []
+    )
   end
 end
