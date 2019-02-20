@@ -1,0 +1,25 @@
+<h1>Créer une nouvelle séance</h1>
+
+<%=  form_for @work_session, url: {action: "create"} do |f| %>
+
+  <%= f.label :'Nom de la séance' %>
+  <%= f.text_field :title %><br><br>
+
+  <%= f.collection_check_boxes :slot, @skills.order(:name), :id, :name do |b| %>
+    <%=  b.label(class:"skills_checkbox") {b.check_box + b.text} %>
+  <% end %><br><br>
+
+  <% @slots.each do |slot| %>
+    <%= f.radio_button :slot, slot.id %><%= slot.title%>
+  <% end %><br><br>
+
+  <%= f.collection_check_boxes(:slot, @teachers.order(:last_name), :id, :first_and_last_name) do |b| %>
+    <%=  b.label(class:"teachers_checkbox") {b.check_box + b.text} %>
+  <% end %><br><br>
+
+  <%= f.collection_check_boxes :slot, @students.order(:last_name), :id, :first_and_last_name do |b| %>
+    <%=  b.label(class:"students_checkbox") {b.check_box + b.text} %>
+  <% end %><br><br>
+
+  <%= f.submit %>
+<% end %>
