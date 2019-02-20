@@ -3,5 +3,11 @@
 require 'rails_helper'
 
 RSpec.describe Skill, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'Database' do
+    it { is_expected.to have_db_column(:name).of_type(:string) }
+  end
+
+  describe "Associations" do
+    it { is_expected.to have_many(:work_session_skills) }
+  end
 end
