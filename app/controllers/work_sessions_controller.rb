@@ -10,9 +10,10 @@ class WorkSessionsController < ApplicationController
   end
 
   def create
-    redirect_to root_path
+    puts params
+    redirect_to work_sessions_path
   end
-  
+
   def index
     @work_sessions = WorkSession.all.order(:date)
   end
