@@ -26,7 +26,7 @@ FactoryBot.define do
       date { Faker::Date.between(1.day.from_now, 100.days.from_now) }
     end
 
-    factory :past_work_session,   traits: [:past]
-    factory :future_work_session, traits: [:future]
+    factory :past_work_session,   traits: [:past_date]
+    factory :future_work_session, traits: [:future_date]
   end
 end

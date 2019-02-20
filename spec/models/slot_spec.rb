@@ -15,5 +15,18 @@
 require 'rails_helper'
 
 RSpec.describe Slot, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'Database' do
+    subject(:new_slot) { described_class.new }
+
+    it { is_expected.to have_db_column(:id).of_type(:integer).with_options(null: false) }
+    it { is_expected.to have_db_column(:title).of_type(:string) }
+    it { is_expected.to have_db_column(:start_time).of_type(:datetime) }
+    it { is_expected.to have_db_column(:end_time).of_type(:datetime) }
+    it { is_expected.to have_db_column(:created_at).of_type(:datetime).with_options(null: false) }
+    it { is_expected.to have_db_column(:updated_at).of_type(:datetime).with_options(null: false) }
+  end
+
+  describe "Associations" do
+    it { is_expected.to have_many(:work_sessions).dependent(:destroy) }
+  end
 end
