@@ -1,0 +1,16 @@
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Nom</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%@work_sessions.each do |work_session|%>
+    <tr>
+      <td><%=work_session.date.strftime("%d %b %Y at %l:%M")%></td>
+      <td><%=work_session.title%></td>
+    </tr>
+    <%end%>
+  </tbody>
+</table>
