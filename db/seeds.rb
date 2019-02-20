@@ -42,6 +42,7 @@ start = 8
 end_at = 9
 8.times do |i|
   Slot.create!(
+    title: "M#{i + 1}",
     start_time: Time.strptime("#{start + i}:00", "%H:%M"),
     end_time: Time.strptime("#{end_at + i}:00", "%H:%M")
   )
