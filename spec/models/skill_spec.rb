@@ -8,6 +8,6 @@ RSpec.describe Skill, type: :model do
   end
 
   describe "Associations" do
-    it { is_expected.to have_many(:work_session_skills) }
+    it { is_expected.to have_many(:work_session_skills).dependent(:destroy) }
   end
 end

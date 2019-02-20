@@ -9,7 +9,7 @@ RSpec.describe Student, type: :model do
   end
 
   describe "Associations" do
-    it { is_expected.to have_many(:work_session_students) }
+    it { is_expected.to have_many(:work_session_students).dependent(:destroy) }
     it { is_expected.to have_many(:work_sessions).through(:work_session_students) }
   end
 end
