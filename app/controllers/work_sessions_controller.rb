@@ -18,6 +18,17 @@ class WorkSessionsController < ApplicationController
     @work_sessions = WorkSession.all.order(:date)
   end
 
+  def duplicate
+    original = WorkSession.find(params[:work_session_id])
+    @work_session = original.duplicate
+    p @work_session
+    @skills = Skill.all
+    @slots = Slot.all
+    @teachers = Teacher.all
+    @students = Student.all
+    render 'new'
+  end
+
   private
 
   def ws_parameters
@@ -26,7 +37,8 @@ class WorkSessionsController < ApplicationController
       :date,
       :slot_id,
       teacher_ids: [],
-      student_ids: []
+      student_ids: [],
+      skill_ids: []
     )
   end
 end

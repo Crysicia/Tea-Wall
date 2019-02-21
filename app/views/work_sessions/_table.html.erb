@@ -3,6 +3,7 @@
     <tr>
       <th>Date</th>
       <th>Nom</th>
+      <th>Action</th>
     </tr>
   </thead>
   <tbody>
@@ -10,6 +11,7 @@
     <tr>
       <td><%=work_session.date.strftime("%d %b %Y at %l:%M")%></td>
       <td><%=work_session.title%></td>
+      <td><%= link_to 'duplicate', work_session_duplicate_path(work_session) %></td>
     </tr>
     <%end%>
   </tbody>
