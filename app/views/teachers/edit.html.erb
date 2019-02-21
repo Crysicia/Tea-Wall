@@ -3,13 +3,13 @@
 <br><br>
 
 <%= form_for(@teacher) do |f| %>
-  <%= f.label :Prénom %><br>
+  <%= f.label :first_name, 'Prénom' %><br>
   <%= f.text_field :first_name, class: 'form-control' %><br><br>
 
-  <%= f.label :Nom %><br>
+  <%= f.label :last_name, 'Nom' %><br>
   <%= f.text_field :last_name, class: 'form-control' %><br><br>
 
-  <%= f.label :Matière %><br>
+  <%= f.label :subject, 'Matière' %><br>
   <%= f.text_field :subject, class: 'form-control' %><br><br>
 
   <%= f.submit "Enregistrer les modifications", class: "btn btn-primary" %>
