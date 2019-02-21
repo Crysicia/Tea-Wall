@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class WorkSessionsController < ApplicationController
-  before_action :find_work_session, only: %i[edit update]
+  before_action :find_work_session, only: %i[edit update destroy]
 
   def new
     @work_session = WorkSession.new
@@ -34,6 +34,12 @@ class WorkSessionsController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    @work_session.destroy
+    flash[:success] = "Séance supprimée"
+    redirect_to work_sessions_path
   end
 
   private
