@@ -12,4 +12,5 @@
 
 class Skill < ApplicationRecord
   has_many :work_session_skills, dependent: :destroy
+  has_many :student_skills, dependent: :destroy
 end

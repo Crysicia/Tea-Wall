@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_19_173137) do
+ActiveRecord::Schema.define(version: 2019_02_21_185911) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,15 @@ ActiveRecord::Schema.define(version: 2019_02_19_173137) do
     t.time "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "student_skills", force: :cascade do |t|
+    t.bigint "student_id"
+    t.bigint "skill_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["skill_id"], name: "index_student_skills_on_skill_id"
+    t.index ["student_id"], name: "index_student_skills_on_student_id"
   end
 
   create_table "students", force: :cascade do |t|
@@ -58,6 +67,7 @@ ActiveRecord::Schema.define(version: 2019_02_19_173137) do
     t.bigint "student_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "present", default: false
     t.index ["student_id"], name: "index_work_session_students_on_student_id"
     t.index ["work_session_id"], name: "index_work_session_students_on_work_session_id"
   end
@@ -80,6 +90,8 @@ ActiveRecord::Schema.define(version: 2019_02_19_173137) do
     t.index ["slot_id"], name: "index_work_sessions_on_slot_id"
   end
 
+  add_foreign_key "student_skills", "skills"
+  add_foreign_key "student_skills", "students"
   add_foreign_key "work_session_skills", "skills"
   add_foreign_key "work_session_skills", "work_sessions"
   add_foreign_key "work_session_students", "students"

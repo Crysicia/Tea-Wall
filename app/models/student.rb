@@ -15,6 +15,9 @@ class Student < ApplicationRecord
   has_many :work_session_students, dependent: :destroy
   has_many :work_sessions, through: :work_session_students
 
+  has_many :student_skills, dependent: :destroy
+  has_many :skills, through: :student_skills
+
   def first_and_last_name
     "#{first_name} #{last_name.upcase}"
   end
