@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class WorkSessionsController < ApplicationController
-  before_action :set_checkboxes, only: %i[new duplicate]
+  before_action :find_work_session, only: %i[edit update destroy]
+  before_action :set_checkboxes, only: %i[new edit duplicate]
 
   def new
     @work_session = WorkSession.new
@@ -14,6 +15,23 @@ class WorkSessionsController < ApplicationController
 
   def index
     @work_sessions = WorkSession.all.order(:date)
+  end
+
+  def edit; end
+
+  def update
+    if @work_session.update(ws_parameters)
+      flash[:success] = "Modification enregistrée"
+      redirect_to action: 'index'
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @work_session.destroy
+    flash[:success] = "Séance supprimée"
+    redirect_to work_sessions_path
   end
 
   def duplicate
@@ -29,10 +47,14 @@ class WorkSessionsController < ApplicationController
       :title,
       :date,
       :slot_id,
+      skill_ids: [],
       teacher_ids: [],
       student_ids: [],
-      skill_ids: []
     )
+  end
+
+  def find_work_session
+    @work_session = WorkSession.find(params[:id])
   end
 
   def set_checkboxes
