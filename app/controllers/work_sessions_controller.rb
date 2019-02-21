@@ -50,7 +50,6 @@ class WorkSessionsController < ApplicationController
       skill_ids: [],
       teacher_ids: [],
       student_ids: [],
-      skill_ids: []
     )
   end
 
