@@ -33,7 +33,7 @@ class WorkSessionsController < ApplicationController
     flash[:success] = "Séance supprimée"
     redirect_to work_sessions_path
   end
-  
+
   def duplicate
     original = WorkSession.find(params[:work_session_id])
     @work_session = original.duplicate
