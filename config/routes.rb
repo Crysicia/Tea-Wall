@@ -3,6 +3,6 @@
 Rails.application.routes.draw do
   resources :teachers, only: %i[index]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :students, only: [:index]
-  resources :work_sessions, only: %i[new create index]
+  resources :students, only: %i[index edit]
+  resources :work_sessions, only: %i[new create index], path: 'sessions'
 end
