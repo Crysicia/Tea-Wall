@@ -20,6 +20,7 @@ class WorkSessionsController < ApplicationController
 
   def show
     @work_session = WorkSession.find(params[:id])
+    @students = @work_session.students
   end
 
   def edit; end
@@ -59,6 +60,7 @@ class WorkSessionsController < ApplicationController
       skill_ids: [],
       teacher_ids: [],
       student_ids: [],
+      work_session_students_attributes: %i[present id]
     )
   end
 

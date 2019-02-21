@@ -10,7 +10,13 @@
 <% @work_session.teachers.each do |teacher|%>
   <%= teacher.first_and_last_name %><br>
 <% end %><br><br>
-<h3>Liste d'élèves:</h3>
-<% @work_session.students.each do |student|%>
-  <%= student.first_and_last_name %><br>
-<% end %><br><br>
+<h3>Liste d'appel:</h3><br>
+
+<%= form_for @work_session do |f| %>
+    <%= f.fields_for :work_session_students do |wssf| %>
+      <% student = wssf.object.student %>
+      <%= student.first_and_last_name %>
+      <%= wssf.check_box :present %><br>
+    <% end %><br>
+  <%= f.submit "Soumettre la liste d'appel" %>
+<% end %>
