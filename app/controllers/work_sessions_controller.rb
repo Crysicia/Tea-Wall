@@ -21,7 +21,6 @@ class WorkSessionsController < ApplicationController
   def duplicate
     original = WorkSession.find(params[:work_session_id])
     @work_session = original.duplicate
-    p @work_session
     @skills = Skill.all
     @slots = Slot.all
     @teachers = Teacher.all
