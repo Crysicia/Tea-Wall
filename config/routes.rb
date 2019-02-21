@@ -6,8 +6,5 @@ Rails.application.routes.draw do
   resources :teachers
   resources :work_sessions, path: 'sessions' do
     get 'duplicate'
-    post 'student_present'
-    patch 'student_present'
-    put 'student_present'
   end
 end

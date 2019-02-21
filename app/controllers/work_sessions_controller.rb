@@ -20,7 +20,6 @@ class WorkSessionsController < ApplicationController
 
   def show
     @work_session = WorkSession.find(params[:id])
-    @students = @work_session.students
   end
 
   def edit; end
