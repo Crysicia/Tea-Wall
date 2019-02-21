@@ -21,6 +21,9 @@ class WorkSession < ApplicationRecord
   has_many :work_session_teachers, dependent: :destroy
   has_many :teachers, through: :work_session_teachers
 
+  validates :title, presence: true
+  validates :date, presence: true
+
   def slot_start
     Slot.find(slot_id).start_time
   end
