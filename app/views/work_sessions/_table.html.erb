@@ -7,6 +7,9 @@
     <tr>
       <th>Date</th>
       <th>Nom</th>
+      <th>Éditer</th>
+      <th>Supprimer</th>
+      <th>Dupliquer</th>
     </tr>
   </thead>
   <tbody>
@@ -16,6 +19,7 @@
       <td><%=work_session.title%></td>
       <td><%= link_to "Éditer", edit_work_session_path(work_session.id) %></td>
       <td><%= link_to 'Delete', work_session_path(work_session.id), method: :delete, data: { confirm: 'Êtes-vous sûr ?' } %></td>
+      <td><%= link_to 'duplicate', work_session_duplicate_path(work_session) %></td>
     </tr>
     <%end%>
   </tbody>

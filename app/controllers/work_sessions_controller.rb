@@ -2,13 +2,10 @@
 
 class WorkSessionsController < ApplicationController
   before_action :find_work_session, only: %i[edit update destroy]
+  before_action :set_checkboxes, only: %i[new edit duplicate]
 
   def new
     @work_session = WorkSession.new
-    @skills = Skill.all
-    @slots = Slot.all
-    @teachers = Teacher.all
-    @students = Student.all
   end
 
   def create
@@ -20,12 +17,7 @@ class WorkSessionsController < ApplicationController
     @work_sessions = WorkSession.all.order(:date)
   end
 
-  def edit
-    @skills = Skill.all
-    @slots = Slot.all
-    @teachers = Teacher.all
-    @students = Student.all
-  end
+  def edit; end
 
   def update
     if @work_session.update(ws_parameters)
@@ -41,6 +33,12 @@ class WorkSessionsController < ApplicationController
     flash[:success] = "Séance supprimée"
     redirect_to work_sessions_path
   end
+  
+  def duplicate
+    original = WorkSession.find(params[:work_session_id])
+    @work_session = original.duplicate
+    render 'new'
+  end
 
   private
 
@@ -51,11 +49,19 @@ class WorkSessionsController < ApplicationController
       :slot_id,
       skill_ids: [],
       teacher_ids: [],
-      student_ids: []
+      student_ids: [],
+      skill_ids: []
     )
   end
 
   def find_work_session
     @work_session = WorkSession.find(params[:id])
+  end
+
+  def set_checkboxes
+    @skills = Skill.all
+    @slots = Slot.all
+    @teachers = Teacher.all
+    @students = Student.all
   end
 end
