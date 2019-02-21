@@ -1,12 +1,10 @@
 # frozen_string_literal: true
 
 class WorkSessionsController < ApplicationController
+  before_action :set_checkboxes, only: %i[new duplicate]
+
   def new
     @work_session = WorkSession.new
-    @skills = Skill.all
-    @slots = Slot.all
-    @teachers = Teacher.all
-    @students = Student.all
   end
 
   def create
@@ -18,6 +16,12 @@ class WorkSessionsController < ApplicationController
     @work_sessions = WorkSession.all.order(:date)
   end
 
+  def duplicate
+    original = WorkSession.find(params[:work_session_id])
+    @work_session = original.duplicate
+    render 'new'
+  end
+
   private
 
   def ws_parameters
@@ -26,7 +30,15 @@ class WorkSessionsController < ApplicationController
       :date,
       :slot_id,
       teacher_ids: [],
-      student_ids: []
+      student_ids: [],
+      skill_ids: []
     )
+  end
+
+  def set_checkboxes
+    @skills = Skill.all
+    @slots = Slot.all
+    @teachers = Teacher.all
+    @students = Student.all
   end
 end

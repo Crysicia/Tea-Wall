@@ -20,4 +20,11 @@ class WorkSession < ApplicationRecord
   has_many :students, through: :work_session_students
   has_many :work_session_teachers, dependent: :destroy
   has_many :teachers, through: :work_session_teachers
+
+  def duplicate
+    dup = self.dup
+    dup.skills = skills
+    dup.teachers = teachers
+    dup
+  end
 end
