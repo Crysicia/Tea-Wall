@@ -6,8 +6,8 @@
 #
 #  id         :bigint(8)        not null, primary key
 #  title      :string
-#  start_time :datetime
-#  end_time   :datetime
+#  start_time :time
+#  end_time   :time
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
