@@ -20,8 +20,8 @@ RSpec.describe Slot, type: :model do
 
     it { is_expected.to have_db_column(:id).of_type(:integer).with_options(null: false) }
     it { is_expected.to have_db_column(:title).of_type(:string) }
-    it { is_expected.to have_db_column(:start_time).of_type(:datetime) }
-    it { is_expected.to have_db_column(:end_time).of_type(:datetime) }
+    it { is_expected.to have_db_column(:start_time).of_type(:time) }
+    it { is_expected.to have_db_column(:end_time).of_type(:time) }
     it { is_expected.to have_db_column(:created_at).of_type(:datetime).with_options(null: false) }
     it { is_expected.to have_db_column(:updated_at).of_type(:datetime).with_options(null: false) }
   end

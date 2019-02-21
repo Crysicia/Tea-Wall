@@ -52,8 +52,8 @@ end
 10.times do |i|
   WorkSession.create!(
     title: Faker::App.name,
-    date: Faker::Date.forward(10),
-    slot_id: Slot.pluck(:id).sample
+    slot_id: Slot.pluck(:id).sample,
+    date: Faker::Date.forward(10)
   )
   p "work_session #{i} : créé"
 end

@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(version: 2019_02_19_173137) do
 
   create_table "slots", force: :cascade do |t|
     t.string "title"
-    t.datetime "start_time"
-    t.datetime "end_time"
+    t.time "start_time"
+    t.time "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 2019_02_19_173137) do
 
   create_table "work_sessions", force: :cascade do |t|
     t.string "title"
-    t.datetime "date"
+    t.date "date"
     t.bigint "slot_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

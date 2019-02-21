@@ -15,7 +15,7 @@
   <tbody>
     <%@work_sessions.each do |work_session|%>
     <tr>
-      <td><%=work_session.date.strftime("%d %b %Y at %l:%M")%></td>
+      <td><%=l work_session.date, format: :long%> entre <%=l work_session.slot_start, format: :short%> et <%=l work_session.slot_end, format: :short%></td>
       <td><%=work_session.title%></td>
       <td><%= link_to "Éditer", edit_work_session_path(work_session) %></td>
       <td><%= link_to 'Supprimer', work_session_path(work_session), method: :delete, data: { confirm: 'Êtes-vous sûr ?' } %></td>
