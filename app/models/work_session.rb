@@ -21,11 +21,19 @@ class WorkSession < ApplicationRecord
   has_many :work_session_teachers, dependent: :destroy
   has_many :teachers, through: :work_session_teachers
 
+
   def slot_start
     Slot.find(slot_id).start_time
   end
 
   def slot_end
     Slot.find(slot_id).end_time
+  end
+  
+  def duplicate
+    dup = self.dup
+    dup.skills = skills
+    dup.teachers = teachers
+    dup
   end
 end

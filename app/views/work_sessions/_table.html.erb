@@ -3,6 +3,7 @@
     <tr>
       <th>Date</th>
       <th>Nom</th>
+      <th>Action</th>
     </tr>
   </thead>
   <tbody>
@@ -10,6 +11,7 @@
     <tr>
       <td><%=l work_session.date, format: :long%> entre <%=l work_session.slot_start, format: :short%> et <%=l work_session.slot_end, format: :short%></td>
       <td><%=work_session.title%></td>
+      <td><%= link_to 'duplicate', work_session_duplicate_path(work_session) %></td>
     </tr>
     <%end%>
   </tbody>

@@ -2,7 +2,9 @@
 
 Rails.application.routes.draw do
   resources :teachers, only: %i[index]
-  resources :work_sessions, only: %i[index], path: 'sessions'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :students
+  resources :students, only: %i[index edit destroy update]
+  resources :work_sessions, only: %i[new create index], path: 'sessions' do
+    get 'duplicate'
+  end
 end

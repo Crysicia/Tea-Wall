@@ -15,4 +15,8 @@
 class Teacher < ApplicationRecord
   has_many :work_session_teachers, dependent: :destroy
   has_many :work_sessions, through: :work_session_teachers
+
+  def first_and_last_name
+    "#{first_name} #{last_name.upcase}"
+  end
 end
