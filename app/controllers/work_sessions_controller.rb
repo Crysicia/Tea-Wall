@@ -18,6 +18,10 @@ class WorkSessionsController < ApplicationController
     @work_sessions = WorkSession.all.order(:date)
   end
 
+  def show
+    @work_session = WorkSession.find(params[:id])
+  end
+
   private
 
   def ws_parameters
@@ -25,6 +29,7 @@ class WorkSessionsController < ApplicationController
       :title,
       :date,
       :slot_id,
+      skill_ids: [],
       teacher_ids: [],
       student_ids: []
     )

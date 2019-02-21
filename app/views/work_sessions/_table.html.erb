@@ -10,6 +10,7 @@
     <tr>
       <td><%=work_session.date.strftime("%d %b %Y at %l:%M")%></td>
       <td><%=work_session.title%></td>
+      <td><%= link_to "voir", work_session_path(work_session.id) %></td>
     </tr>
     <%end%>
   </tbody>
