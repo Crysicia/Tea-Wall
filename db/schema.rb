@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 2019_02_21_115122) do
     t.bigint "student_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "present"
+    t.boolean "present", default: false
     t.index ["student_id"], name: "index_work_session_students_on_student_id"
     t.index ["work_session_id"], name: "index_work_session_students_on_work_session_id"
   end
