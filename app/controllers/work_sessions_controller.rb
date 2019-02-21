@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class WorkSessionsController < ApplicationController
-
   before_action :set_locale
 
   before_action :set_checkboxes, only: %i[new duplicate]
@@ -26,10 +25,11 @@ class WorkSessionsController < ApplicationController
   end
 
   private
+
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
   end
-  
+
   def ws_parameters
     params.require(:work_session).permit(
       :title,
