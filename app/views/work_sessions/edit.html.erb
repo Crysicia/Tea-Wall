@@ -1,8 +1,6 @@
-<h1>Créer une nouvelle séance</h1>
+<h1>Éditer une séances</h1>
 
-<br><br>
-
-<%=  form_for @work_session, url: {action: "create"} do |f| %>
+<%=  form_for @work_session do |f| %>
 
   <%= f.label :'Nom de la séance' %>
   <%= f.text_field :title %><br><br>
@@ -25,5 +23,5 @@
     <%=  b.label(class:"students_checkbox") {b.check_box + b.text} %>
   <% end %><br><br>
 
-  <%= f.submit %>
+  <%= f.submit "Enregistrer les modifications" %>
 <% end %>
