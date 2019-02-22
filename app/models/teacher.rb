@@ -16,6 +16,10 @@ class Teacher < ApplicationRecord
   has_many :work_session_teachers, dependent: :destroy
   has_many :work_sessions, through: :work_session_teachers
 
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :subject, presence: true
+
   def first_and_last_name
     "#{first_name} #{last_name.upcase}"
   end
