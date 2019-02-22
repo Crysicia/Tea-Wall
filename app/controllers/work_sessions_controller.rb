@@ -2,7 +2,7 @@
 
 class WorkSessionsController < ApplicationController
   before_action :set_locale
-  before_action :find_work_session, only: %i[edit update destroy]
+  before_action :find_work_session, only: %i[edit update destroy show]
   before_action :set_checkboxes, only: %i[new edit duplicate]
 
   def new
