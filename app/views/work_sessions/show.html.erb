@@ -1,0 +1,22 @@
+<h1>Séance: <%= @work_session.title %></h1><br>
+<h2>Compétences:</h2>
+<% @work_session.skills.each do |skill|%>
+  <%= skill.name %><br>
+<% end %><br><br>
+<h3>Date: <%= @work_session.date %></h3>
+<h3>Créneau:</h3>
+<%= @work_session.slot.title %><br><br>
+<h3>Profs:</h3>
+<% @work_session.teachers.each do |teacher|%>
+  <%= teacher.first_and_last_name %><br>
+<% end %><br><br>
+<h3>Liste d'appel:</h3><br>
+
+<%= form_for @work_session do |f| %>
+    <%= f.fields_for :work_session_students do |wssf| %>
+      <% student = wssf.object.student %>
+      <%= student.first_and_last_name %>
+      <%= wssf.check_box :present %><br>
+    <% end %><br>
+  <%= f.submit "Soumettre la liste d'appel" %>
+<% end %>
