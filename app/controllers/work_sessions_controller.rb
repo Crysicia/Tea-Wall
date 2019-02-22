@@ -2,7 +2,7 @@
 
 class WorkSessionsController < ApplicationController
   before_action :set_locale
-  before_action :find_work_session, only: %i[edit update destroy]
+  before_action :find_work_session, only: %i[edit update destroy show]
   before_action :set_checkboxes, only: %i[new edit duplicate]
 
   def new
@@ -17,6 +17,8 @@ class WorkSessionsController < ApplicationController
   def index
     @work_sessions = WorkSession.all.order(:date)
   end
+
+  def show; end
 
   def edit; end
 
@@ -55,6 +57,7 @@ class WorkSessionsController < ApplicationController
       skill_ids: [],
       teacher_ids: [],
       student_ids: [],
+      work_session_students_attributes: %i[present id]
     )
   end
 

@@ -21,6 +21,8 @@ class WorkSession < ApplicationRecord
   has_many :work_session_teachers, dependent: :destroy
   has_many :teachers, through: :work_session_teachers
 
+  accepts_nested_attributes_for :work_session_students
+
   def slot_start
     Slot.find(slot_id).start_time
   end
