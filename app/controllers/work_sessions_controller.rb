@@ -18,9 +18,7 @@ class WorkSessionsController < ApplicationController
     @work_sessions = WorkSession.all.order(:date)
   end
 
-  def show
-    @work_session = WorkSession.find(params[:id])
-  end
+  def show; end
 
   def edit; end
 
