@@ -15,5 +15,13 @@
 class Slot < ApplicationRecord
   has_many :work_sessions, dependent: :destroy
 
+  validate :cannot_overlap
+
   scope :between, ->(start_time, end_time) { where('start_time > ? AND end_time < ?', start_time, end_time) }
+
+  private
+
+  def cannot_overlap
+    errors[:base] << "Slot times cannot be overlapping" if Slot.between(start_time, end_time).any?
+  end
 end
