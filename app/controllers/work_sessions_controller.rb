@@ -18,12 +18,16 @@ class WorkSessionsController < ApplicationController
     @work_sessions = WorkSession.all.order(:date)
   end
 
-  def show; end
+  def show
+    @work_session_students_present = WorkSessionStudent.where(work_session_id: @work_session.id, present: true)
+    @work_session_students_absent = WorkSessionStudent.where(work_session_id: @work_session.id, present: false)
+  end
 
   def edit; end
 
   def update
     if @work_session.update(ws_parameters)
+      @work_session.update_student_skills()
       flash[:success] = "Modification enregistrée"
       redirect_to action: 'index'
     else

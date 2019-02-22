@@ -40,4 +40,19 @@ class WorkSession < ApplicationRecord
     dup.teachers = teachers
     dup
   end
+
+  def update_student_skills
+    present_students = WorkSessionStudent.all.where(work_session_id: self.id, present: true)
+    skills = self.skills
+    present_students.each do |student|
+      skills.each do |skill|
+        student_skill = StudentSkill.find_by(student_id: student.id, skill_id: skill.id)
+        if student_skill
+          student_skill.update(n_of_times: student_skill.n_of_times += 1)
+        elsif student.find(student.id)
+          StudentSkill.create!(student_id: student.id, skill_id: skill.id)
+        end
+      end
+    end
+  end
 end
