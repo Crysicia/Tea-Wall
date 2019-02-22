@@ -23,7 +23,7 @@ class WorkSession < ApplicationRecord
 
   validates :title, presence: true
   validates :date, presence: true
-  @
+
   accepts_nested_attributes_for :work_session_students
 
   def slot_start
