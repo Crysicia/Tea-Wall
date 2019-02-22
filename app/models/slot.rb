@@ -14,4 +14,6 @@
 
 class Slot < ApplicationRecord
   has_many :work_sessions, dependent: :destroy
+
+  scope :between, ->(start_time, end_time) { where('start_time > ? AND end_time < ?', start_time, end_time) }
 end
