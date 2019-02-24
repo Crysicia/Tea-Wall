@@ -1,10 +1,14 @@
 # frozen_string_literal: true
 
 class StudentsController < ApplicationController
-  before_action :find_student, only: %i[edit update destroy]
+  before_action :find_student, only: %i[edit update destroy show]
 
   def index
     @students = Student.all
+  end
+
+  def show
+    @student_skills = StudentSkill.where(student_id: @student.id)
   end
 
   def edit; end

@@ -7,6 +7,7 @@
     <tr>
       <th>Prénom</th>
       <th>Nom</th>
+      <th>Voir Profil</th>
       <th>Éditer</th>
       <th>Supprimer</th>
     </tr>
@@ -16,6 +17,7 @@
       <tr>
         <td><%= student.first_name %></td>
         <td><%= student.last_name.upcase %></td>
+        <td><%= link_to "Voir", student_path(student)%></td>
         <td><%= link_to "Éditer", edit_student_path(student) %></td>
         <td><%= link_to 'Supprimer', student_path(student), method: :delete, data: { confirm: 'Êtes-vous sûr ?' } %></td>
       </tr>
