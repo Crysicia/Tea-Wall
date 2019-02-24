@@ -13,7 +13,7 @@
 
 <% if @work_session_students_present.empty? %>
   <h3>Liste d'appel:</h3><br>
-  <%= form_for @work_session do |f| %>
+  <%= form_for @work_session, url: work_session_update_student_skills_path(@work_session.id) do |f| %>
       <%= f.fields_for :work_session_students do |wssf| %>
         <% student = wssf.object.student %>
         <%= student.first_and_last_name %>
@@ -21,7 +21,7 @@
       <% end %><br>
     <%= f.submit "Soumettre la liste d'appel" %>
   <% end %>
-<%  else  %>
+<% else %>
   <h3>La liste d'appel à déjà été soumise</h3><br>
   <h4>Présent(s)</h4><br>
   <% @work_session_students_present.each do |wssp| %>

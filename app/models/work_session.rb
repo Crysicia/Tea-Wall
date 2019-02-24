@@ -41,16 +41,17 @@ class WorkSession < ApplicationRecord
     dup
   end
 
+  # imortant test integration to do on this method
   def update_student_skills
-    present_students = WorkSessionStudent.all.where(work_session_id: self.id, present: true)
-    skills = self.skills
-    present_students.each do |student|
-      skills.each do |skill|
-        student_skill = StudentSkill.find_by(student_id: student.id, skill_id: skill.id)
+    skills_ids = skills.pluck(:id)
+    students_ids = WorkSessionStudent.all.where(work_session_id: id, present: true).pluck(:student_id)
+    students_ids.each do |student_id|
+      skills_ids.each do |skill_id|
+        student_skill = StudentSkill.find_by(student_id: student_id, skill_id: skill_id)
         if student_skill
-          student_skill.update(n_of_times: student_skill.n_of_times += 1)
-        elsif student.find(student.id)
-          StudentSkill.create!(student_id: student.id, skill_id: skill.id)
+          student_skill.update!(n_of_times: student_skill.n_of_times += 1)
+        else
+          StudentSkill.create!(student_id: student_id, skill_id: skill_id)
         end
       end
     end

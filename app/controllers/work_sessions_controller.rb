@@ -27,12 +27,19 @@ class WorkSessionsController < ApplicationController
 
   def update
     if @work_session.update(ws_parameters)
-      @work_session.update_student_skills()
       flash[:success] = "Modification enregistrée"
       redirect_to action: 'index'
     else
       render 'edit'
     end
+  end
+
+  def update_student_skills
+    @work_session = WorkSession.find(params[:work_session_id])
+    @work_session.update(ws_parameters)
+    @work_session.update_student_skills
+    flash[:success] = "La liste d'appel à bien été envoyée"
+    redirect_to action: 'index'
   end
 
   def destroy
