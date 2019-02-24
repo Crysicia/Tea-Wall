@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class StudentsController < ApplicationController
-  before_action :find_student, only: %i[edit update destroy show]
+  before_action :find_student, only: %i[edit update destroy show destroy_skill]
+
+  before_action :update_or_delete, only: %i[update destroy_skill]
 
   def index
     @students = Student.all
@@ -15,8 +17,8 @@ class StudentsController < ApplicationController
 
   def update
     if @student.update(student_params)
+      redirect_to edit_student_path(@student.id)
       flash[:success] = "Modification enregistrée"
-      redirect_to action: 'index'
     else
       render 'edit'
     end
@@ -28,13 +30,37 @@ class StudentsController < ApplicationController
     redirect_to students_path
   end
 
+  def destroy_skill
+    puts "++++++++++++++++++++"
+    puts @student.id
+    puts "++++++++++++++++++++"
+    test = StudentSkill.find_by(student_id: @student.id, skill_id: params[:student][:skill_id]).destroy
+    puts test
+    puts "++++++++++++++++++++"
+    redirect_to edit_student_path(@student.id)
+    flash[:success] = "Compétence supprimé"
+  end
+
   private
 
   def student_params
-    params.require(:student).permit(:first_name, :last_name)
+    params.require(:student).permit(
+      :first_name,
+      :last_name,
+      skill_ids: [],
+      student_skills_attributes: %i[n_of_times id]
+    )
   end
 
   def find_student
     @student = Student.find(params[:id])
+  end
+
+  def update_or_delete
+    if params[:commit] == 'Modifier'
+      update
+    elsif params[:commit] == 'Supprimer la compétence'
+      destroy_skill
+    end
   end
 end

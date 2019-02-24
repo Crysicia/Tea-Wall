@@ -2,7 +2,9 @@
 
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :students
+  resources :students do
+    delete 'destroy_skill'
+  end
   resources :teachers
   resources :work_sessions, path: 'sessions' do
     get 'duplicate'
