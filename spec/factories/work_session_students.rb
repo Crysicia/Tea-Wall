@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: work_session_students
@@ -9,6 +8,7 @@
 #  student_id      :bigint(8)
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  present         :boolean          default(FALSE)
 #
 
 FactoryBot.define do
