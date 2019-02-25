@@ -21,7 +21,6 @@
       <%= stf.submit "Modifier" %>
     <% end %>
     <%= f.hidden_field :id, :value => @student.id %>
-    <%= f.hidden_field :skill_id, :value => assoc.skill.id %>
-    <%= f.submit "Supprimer la compétence" %><br>
+    <%= f.button :supprimer, type: 'submit', name: 'skill_id', value: assoc.skill.id %><br>
   <% end %>
 <% end %>

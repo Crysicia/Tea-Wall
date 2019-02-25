@@ -31,12 +31,8 @@ class StudentsController < ApplicationController
   end
 
   def destroy_skill
-    puts "++++++++++++++++++++"
     puts @student.id
-    puts "++++++++++++++++++++"
-    test = StudentSkill.find_by(student_id: @student.id, skill_id: params[:student][:skill_id]).destroy
-    puts test
-    puts "++++++++++++++++++++"
+    StudentSkill.find_by(student_id: @student.id, skill_id: params[:skill_id]).destroy
     redirect_to edit_student_path(@student.id)
     flash[:success] = "Compétence supprimé"
   end
@@ -59,7 +55,7 @@ class StudentsController < ApplicationController
   def update_or_delete
     if params[:commit] == 'Modifier'
       update
-    elsif params[:commit] == 'Supprimer la compétence'
+    else
       destroy_skill
     end
   end
