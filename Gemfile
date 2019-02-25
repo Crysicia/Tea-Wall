@@ -8,6 +8,7 @@ File.read('./.ruby-version')
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'coffee-rails', '~> 4.2'
 gem 'devise', '~> 4.5'
+gem 'devise-i18n', '~> 1.8'
 gem 'faker', '~> 1.9', '>= 1.9.1'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'jbuilder', '~> 2.5'
