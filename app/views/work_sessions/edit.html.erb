@@ -1,0 +1,29 @@
+<h1>Éditer une séances</h1>
+
+<br><br>
+
+<%=  form_for @work_session do |f| %>
+
+  <%= f.label :title, 'Nom de la séance' %><br>
+  <%= f.text_field :title %><br><br>
+
+  <%= f.date_select :date, order: [:day, :month, :year] %><br><br>
+
+  <%= f.collection_check_boxes :skill_ids, @skills.order(:name), :id, :name do |b| %>
+    <%=  b.label(class:"skills_checkbox") {b.check_box + b.text} %>
+  <% end %><br><br>
+
+  <%= f.collection_radio_buttons(:slot_id, @slots.order(:title), :id, :title) do |b| %>
+    <%=  b.label(class:"slots_radio_button") {b.radio_button + b.text} %>
+  <% end %><br><br>
+
+  <%= f.collection_check_boxes(:teacher_ids, @teachers.order(:last_name), :id, :first_and_last_name) do |b| %>
+    <%=  b.label(class:"teachers_checkbox") {b.check_box + b.text} %>
+  <% end %><br><br>
+
+  <%= f.collection_check_boxes(:student_ids, @students.order(:last_name), :id, :first_and_last_name) do |b| %>
+    <%=  b.label(class:"students_checkbox") {b.check_box + b.text} %>
+  <% end %><br><br>
+
+  <%= f.submit "Enregistrer les modifications" %>
+<% end %>

@@ -1,0 +1,34 @@
+<h1>Séance: <%= @work_session.title %></h1><br>
+<h2>Compétences:</h2>
+<% @work_session.skills.each do |skill|%>
+  <%= skill.name %><br>
+<% end %><br><br>
+<h3>Date: <%= @work_session.date %></h3>
+<h3>Créneau:</h3>
+<%= @work_session.slot.title %><br><br>
+<h3>Profs:</h3>
+<% @work_session.teachers.each do |teacher|%>
+  <%= teacher.first_and_last_name %><br>
+<% end %><br><br>
+
+<% if @work_session_students_present.empty? %>
+  <h3>Liste d'appel:</h3><br>
+  <%= form_for @work_session, url: work_session_update_student_skills_path(@work_session.id) do |f| %>
+      <%= f.fields_for :work_session_students do |wssf| %>
+        <% student = wssf.object.student %>
+        <%= student.first_and_last_name %>
+        <%= wssf.check_box :present %><br>
+      <% end %><br>
+    <%= f.submit "Soumettre la liste d'appel" %>
+  <% end %>
+<% else %>
+  <h3>La liste d'appel à déjà été soumise</h3><br>
+  <h4>Présent(s)</h4><br>
+  <% @work_session_students_present.each do |wssp| %>
+    <%= wssp.student.first_and_last_name %><br>
+  <% end %><br>
+  <h4>Absent(s)</h4><br>
+  <% @work_session_students_absent.each do |wssa| %>
+    <%= wssa.student.first_and_last_name %><br>
+  <% end %>
+<% end %>

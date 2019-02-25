@@ -6,19 +6,18 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 File.read('./.ruby-version')
 
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'bootstrap', '~> 4.2', '>= 4.2.1'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise', '~> 4.5'
+gem 'devise-i18n', '~> 1.8'
 gem 'faker', '~> 1.9', '>= 1.9.1'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'jbuilder', '~> 2.5'
-gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.2'
+gem 'rails-i18n', '~> 5.1'
 gem 'sass-rails', '~> 5.0'
 gem 'sidekiq', '~> 5.2', '>= 5.2.5'
-gem 'stripe', '~> 4.7'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
 

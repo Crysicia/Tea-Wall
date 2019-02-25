@@ -1,0 +1,28 @@
+<h1>Liste des séances</h1>
+
+<%= flash[:success] %><br><br>
+
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Nom</th>
+      <th>Vue</th>
+      <th>Éditer</th>
+      <th>Dupliquer</th>
+      <th>Supprimer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%@work_sessions.each do |work_session|%>
+    <tr>
+      <td><%=l work_session.date, format: :long%> entre <%=l work_session.slot_start, format: :short%> et <%=l work_session.slot_end, format: :short%></td>
+      <td><%=work_session.title%></td>
+      <td><%= link_to "voir", work_session_path(work_session.id) %></td>
+      <td><%= link_to "Éditer", edit_work_session_path(work_session) %></td>
+      <td><%= link_to 'Dupliquer', work_session_duplicate_path(work_session) %></td>
+      <td><%= link_to 'Supprimer', work_session_path(work_session), method: :delete, data: { confirm: 'Êtes-vous sûr ?' } %></td>
+    </tr>
+    <%end%>
+  </tbody>
+</table>
