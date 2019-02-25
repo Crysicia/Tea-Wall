@@ -17,8 +17,8 @@ class StudentsController < ApplicationController
 
   def update
     if @student.update(student_params)
-      redirect_to edit_student_path(@student.id)
       flash[:success] = "Modification enregistrée"
+      redirect_to edit_student_path(@student.id)
     else
       render 'edit'
     end
@@ -31,10 +31,9 @@ class StudentsController < ApplicationController
   end
 
   def destroy_skill
-    puts @student.id
     StudentSkill.find_by(student_id: @student.id, skill_id: params[:skill_id]).destroy
+    flash[:success] = "Compétence supprimée"
     redirect_to edit_student_path(@student.id)
-    flash[:success] = "Compétence supprimé"
   end
 
   private
