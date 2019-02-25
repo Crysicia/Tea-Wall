@@ -1,0 +1,14 @@
+<h1>Profil de l'élève</h1><br>
+
+<%= @student.first_name %><br>
+<%= @student.last_name %><br><br>
+<h2>Compétences</h2><br>
+<% @student.skills.each do |skill| %>
+  Nom: <%= skill.name %> -
+  Traité: <%= @student.skill_treated_n_times(skill.id) %> fois<br>
+<% end %>
+
+<h2>Séances</h2><br>
+<% @student.work_sessions. each do |ws| %>
+  Titre: <%= ws.title %><br>
+<% end %>
