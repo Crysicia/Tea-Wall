@@ -9,6 +9,7 @@
 #  student_id      :bigint(8)
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  present         :boolean          default(FALSE)
 #
 
 class WorkSessionStudent < ApplicationRecord
