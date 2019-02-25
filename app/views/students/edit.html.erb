@@ -1,3 +1,4 @@
+<%= flash[:success] %><br><br>
 <h1>Éditer un élève</h1>
 
 <br><br>
@@ -10,4 +11,16 @@
   <%= f.text_field :last_name, class: 'form-control' %><br><br>
 
   <%= f.submit "Enregistrer les modifications", class: "btn btn-primary" %>
+<% end %>
+
+<%= form_for @student, url: {action: "update"} do |f| %>
+  <% @student.student_skills.each do |assoc| %>
+    <%= f.fields_for :student_skills, assoc do |stf| %>
+      <%= stf.label assoc.skill.name %>
+      <%= stf.text_field :n_of_times %>
+      <%= stf.submit "Modifier" %>
+    <% end %>
+    <%= f.hidden_field :id, :value => @student.id %>
+    <%= f.button :supprimer, type: 'submit', name: 'skill_id', value: assoc.skill.id %><br>
+  <% end %>
 <% end %>

@@ -20,7 +20,13 @@ class Student < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
 
+  accepts_nested_attributes_for :student_skills
+
   def first_and_last_name
     "#{first_name} #{last_name.upcase}"
+  end
+
+  def skill_treated_n_times(skill_id)
+    StudentSkill.find_by(student_id: id, skill_id: skill_id).n_of_times
   end
 end

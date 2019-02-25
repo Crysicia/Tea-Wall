@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2019_02_21_185911) do
   create_table "student_skills", force: :cascade do |t|
     t.bigint "student_id"
     t.bigint "skill_id"
+    t.integer "n_of_times", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["skill_id"], name: "index_student_skills_on_skill_id"
