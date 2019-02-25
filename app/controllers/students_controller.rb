@@ -53,7 +53,7 @@ class StudentsController < ApplicationController
   end
 
   def update_or_delete
-    if params[:commit] == 'Modifier'
+    if params[:commit] == 'Modifier' || params[:commit] == 'Enregistrer les modifications'
       update
     else
       destroy_skill
