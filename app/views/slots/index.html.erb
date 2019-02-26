@@ -1,0 +1,24 @@
+<h1>Liste des créneaux</h1>
+
+<%= flash[:success] %><br><br>
+
+<table>
+  <thead>
+    <tr>
+      <th>Titre</th>
+      <th>Début</th>
+      <th>Fin</th>
+      <th>Éditer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @slots.each do |slot| %>
+      <tr>
+        <td><%= slot.title %></td>
+        <td><%=l slot.start_time, format: :short %></td>
+        <td><%=l slot.end_time, format: :short %></td>
+        <td><%= link_to "Éditer", edit_slot_path(slot) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -23,7 +23,7 @@ class Slot < ApplicationRecord
   private
 
   def cannot_overlap
-    errors[:base] << "Slot times cannot be overlapping" if Slot.between(start_time, end_time).any?
+    errors[:base] << "Slot times cannot be overlapping" if Slot.between(start_time, end_time).where.not(id: id).any?
   end
 
   def cannot_end_before_start
