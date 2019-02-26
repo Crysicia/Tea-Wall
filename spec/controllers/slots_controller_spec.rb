@@ -3,16 +3,16 @@
 require 'rails_helper'
 
 RSpec.describe SlotsController, type: :controller do
-  describe "GET #edit" do
-    it "returns http success" do
-      get :edit
-      expect(response).to have_http_status(:success)
-    end
+  let(:user) { create(:user) }
+
+  def login_user
+    sign_in user
   end
 
-  describe "GET #update" do
+  describe "GET #index" do
     it "returns http success" do
-      get :update
+      login_user
+      get :index
       expect(response).to have_http_status(:success)
     end
   end
