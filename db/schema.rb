@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_25_102924) do
+ActiveRecord::Schema.define(version: 2019_02_26_104312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 2019_02_25_102924) do
     t.bigint "slot_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "template", default: false
     t.index ["slot_id"], name: "index_work_sessions_on_slot_id"
   end
 
