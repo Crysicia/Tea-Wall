@@ -6,7 +6,7 @@ class StudentsController < ApplicationController
   before_action :update_or_delete, only: %i[update destroy_skill]
 
   def index
-    @students = Student.all
+    @students = Student.all.order(:last_name)
   end
 
   def show
