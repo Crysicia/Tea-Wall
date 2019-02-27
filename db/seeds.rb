@@ -36,19 +36,18 @@ Skill.delete_all
 end
 
 # for the moment only 8slots of 55 minutes each.
-WorkSession.delete_all
 Slot.delete_all
-start = 8
-end_at = 9
+hour = 8
 8.times do |i|
   Slot.create!(
     title: "M#{i + 1}",
-    start_time: Time.strptime("#{start + i}:00", "%H:%M"),
-    end_time: Time.strptime("#{end_at + i}:00", "%H:%M")
+    start_time: Time.strptime("#{hour + i}:00", "%H:%M"),
+    end_time: Time.strptime("#{hour + i}:55", "%H:%M")
   )
   p "slot #{i} : créé"
 end
 
+WorkSession.delete_all
 10.times do |i|
   WorkSession.create!(
     title: Faker::App.name,

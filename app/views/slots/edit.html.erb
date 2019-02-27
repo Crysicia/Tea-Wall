@@ -1,0 +1,17 @@
+<%= flash[:success] %><br><br>
+<h1>Éditer un créneau</h1>
+
+<br><br>
+
+<%= form_for(@slot) do |f| %>
+  <%= f.label :title, 'Titre' %><br>
+  <%= f.text_field :title %><br><br>
+
+  <%= f.label :start_time, 'Début' %><br>
+  <%= f.time_select :start_time %><br><br>
+
+  <%= f.label :end_time, 'Fin' %><br>
+  <%= f.time_select :end_time %><br><br>
+
+  <%= f.submit "Enregistrer les modifications" %>
+<% end %>
