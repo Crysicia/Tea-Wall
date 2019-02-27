@@ -9,7 +9,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Student.delete_all
-20.times do |i|
+50.times do |i|
   Student.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name
@@ -18,7 +18,7 @@ Student.delete_all
 end
 
 Teacher.delete_all
-5.times do |i|
+30.times do |i|
   Teacher.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
