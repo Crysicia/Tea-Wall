@@ -2,11 +2,10 @@
 
 class StudentsController < ApplicationController
   before_action :find_student, only: %i[edit update destroy show destroy_skill]
-
   before_action :update_or_delete, only: %i[update destroy_skill]
 
   def index
-    @students = Student.all.order(:last_name)
+    @pagy, @students = pagy(Student.all.order(:last_name), items: 20)
   end
 
   def show
