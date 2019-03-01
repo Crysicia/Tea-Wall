@@ -13,4 +13,5 @@ Rails.application.routes.draw do
     patch 'update_student_skills'
     put 'update_student_skills'
   end
+  resources :slots, only: %i[index edit update]
 end

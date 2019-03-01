@@ -4,7 +4,7 @@ class TeachersController < ApplicationController
   before_action :find_teacher, only: %i[edit update destroy]
 
   def index
-    @teachers = Teacher.all.order(:subject)
+    @pagy, @teachers = pagy(Teacher.all.order(:subject), items: 15)
   end
 
   def edit; end

@@ -12,6 +12,7 @@ gem 'devise-i18n', '~> 1.8'
 gem 'faker', '~> 1.9', '>= 1.9.1'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'jbuilder', '~> 2.5'
+gem 'pagy', '~> 2.0'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.2'
@@ -42,6 +43,7 @@ end
 
 group :test do
   gem 'database_cleaner', '~> 1.7'
+  gem 'rails-controller-testing', '~> 1.0', '>= 1.0.4'
   gem 'shoulda-matchers', '~> 3.1', '>= 3.1.2'
   gem 'simplecov', '~> 0.16.1', require: false
 end

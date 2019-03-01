@@ -9,7 +9,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Student.delete_all
-20.times do |i|
+50.times do |i|
   Student.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name
@@ -18,7 +18,7 @@ Student.delete_all
 end
 
 Teacher.delete_all
-5.times do |i|
+30.times do |i|
   Teacher.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -36,19 +36,18 @@ Skill.delete_all
 end
 
 # for the moment only 8slots of 55 minutes each.
-WorkSession.delete_all
 Slot.delete_all
-start = 8
-end_at = 9
+hour = 8
 8.times do |i|
   Slot.create!(
     title: "M#{i + 1}",
-    start_time: Time.strptime("#{start + i}:00", "%H:%M"),
-    end_time: Time.strptime("#{end_at + i}:00", "%H:%M")
+    start_time: Time.strptime("#{hour + i}:00", "%H:%M"),
+    end_time: Time.strptime("#{hour + i}:55", "%H:%M")
   )
   p "slot #{i} : créé"
 end
 
+WorkSession.delete_all
 10.times do |i|
   WorkSession.create!(
     title: Faker::App.name,
